@@ -26,16 +26,28 @@
         "https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/Brighton_%26_Hove_Albion_logo.svg/400px-Brighton_%26_Hove_Albion_logo.svg.png",
     },
   ];
+
+  let classNameModifier = "";
+
+  const changeColor = () => {
+    // classNameModifier = classNameModifier === "clicked" ? "" : "clicked";
+
+    if (classNameModifier === "clicked") {
+      classNameModifier = "";
+    } else {
+      classNameModifier = "clicked";
+    }
+  };
 </script>
 
 <div class="grid-container">
   {#each clubs as club}
-    <div class="club-tile">
+    <button class="club-tile {classNameModifier}" on:click={changeColor}>
       <div>
         <img src={club.image} alt={club.name} />
       </div>
       {club.name}
-    </div>
+    </button>
   {/each}
 </div>
 
@@ -60,5 +72,8 @@
     background-color: blueviolet;
     color: white;
     height: 200px;
+  }
+  .clicked {
+    background-color: brown;
   }
 </style>
